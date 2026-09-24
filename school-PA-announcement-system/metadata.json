@@ -1,0 +1,10 @@
+{
+  "name": "School PA Announcement System",
+  "description": "School-wide public address and emergency announcement system for Linux server, Principal Android transmitters, and Classroom IFB panel receivers.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,539 @@
+@import "tailwindcss";
+
+/* Modern thin custom scrollbar for sleek presentation */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: rgba(226, 232, 240, 0.6);
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Modal scroll container styling */
+.modal-scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+  overscroll-behavior: contain;
+}
+
+@layer base {
+  html {
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* =========================================================
+   LIGHT THEME MODE OVERRIDES
+   Ensures pristine contrast, WCAG AA compliance, and eliminates
+   dark-on-dark unreadable text and grayed card backgrounds.
+   ========================================================= */
+
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Base canvas / background containers */
+html.light .min-h-screen,
+html.light [id*="compact"],
+html.light main {
+  background-color: transparent;
+}
+
+/* Main Cards & Panels (Any variant of bg-slate-900: /60, /70, /80, /90, etc.) */
+html.light [class*="bg-slate-900"]:not(.fixed):not(button) {
+  background-color: #ffffff !important;
+}
+
+/* Headers, Navbars, Top Bars, Footers */
+html.light header,
+html.light nav,
+html.light footer {
+  background-color: #ffffff !important;
+}
+
+/* Sub-cards, nested container boxes & inner stat chips (Any variant of bg-slate-950) */
+html.light [class*="bg-slate-950"]:not(.fixed) {
+  background-color: #f8fafc !important;
+}
+
+/* Secondary neutral containers */
+html.light div[class*="bg-slate-800"]:not(button),
+html.light span[class*="bg-slate-800"] {
+  background-color: #f1f5f9 !important;
+}
+
+/* Table borders and divider lines */
+html.light [class*="divide-slate-"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+html.light tbody tr:hover,
+html.light tr[class*="hover:bg-slate-800"]:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Universal Borders in Light Mode */
+html.light [class*="border-slate-"] {
+  border-color: #e2e8f0 !important;
+}
+
+/* =========================================================
+   HIGH-CONTRAST TYPOGRAPHY HIERARCHY IN LIGHT MODE
+   ========================================================= */
+
+/* Headings and primary bold values */
+html.light .text-white,
+html.light [class*="text-white"] {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-100 {
+  color: #0f172a !important;
+}
+
+/* Secondary bold text */
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+/* Standard body text */
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+/* Subtitles, labels, and secondary indicators (boosted to slate-600 for crisp 5.2:1 contrast) */
+html.light .text-slate-400 {
+  color: #475569 !important;
+}
+
+/* Tertiary small labels and hints (boosted to slate-500 for crisp 4.6:1 contrast) */
+html.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+html.light .text-slate-600 {
+  color: #64748b !important;
+}
+
+/* =========================================================
+   ACCENT COLORS TUNED FOR LIGHT SURFACES
+   Deep, vibrant tones guaranteeing high contrast readability.
+   ========================================================= */
+
+/* Indigo accents */
+html.light .text-indigo-400,
+html.light .text-indigo-300,
+html.light .text-indigo-500,
+html.light [class*="text-indigo-300"],
+html.light [class*="text-indigo-400"] {
+  color: #4338ca !important; /* indigo-700 */
+}
+
+/* Emerald accents (online status, confirmation) */
+html.light .text-emerald-400,
+html.light .text-emerald-300,
+html.light [class*="text-emerald-300"],
+html.light [class*="text-emerald-400"] {
+  color: #047857 !important; /* emerald-700 */
+}
+
+/* Rose / Danger / Emergency accents */
+html.light .text-rose-400,
+html.light .text-rose-300,
+html.light [class*="text-rose-300"],
+html.light [class*="text-rose-400"] {
+  color: #be123c !important; /* rose-700 */
+}
+
+/* Amber / Warning / Lock accents */
+html.light .text-amber-400,
+html.light .text-amber-300,
+html.light .text-amber-500,
+html.light [class*="text-amber-300"],
+html.light [class*="text-amber-400"] {
+  color: #b45309 !important; /* amber-700 */
+}
+
+/* Blue accents */
+html.light .text-blue-400,
+html.light .text-blue-300,
+html.light [class*="text-blue-300"],
+html.light [class*="text-blue-400"] {
+  color: #1d4ed8 !important; /* blue-700 */
+}
+
+/* Purple accents */
+html.light .text-purple-400,
+html.light .text-purple-300,
+html.light [class*="text-purple-300"],
+html.light [class*="text-purple-400"] {
+  color: #7e22ce !important; /* purple-700 */
+}
+
+/* Deep contrast tones for light-tinted cards */
+html.light .text-rose-100 {
+  color: #9f1239 !important; /* rose-800 */
+}
+html.light .text-amber-100 {
+  color: #92400e !important; /* amber-800 */
+}
+html.light .text-yellow-100 {
+  color: #854d0e !important; /* yellow-800 */
+}
+html.light .text-blue-100 {
+  color: #1e40af !important; /* blue-800 */
+}
+html.light .text-emerald-100 {
+  color: #065f46 !important; /* emerald-800 */
+}
+
+/* =========================================================
+   TINTED BADGES & ACCENT PILL BACKGROUNDS
+   ========================================================= */
+
+/* Indigo soft tint badges & chips */
+html.light [class*="bg-indigo-500/"],
+html.light [class*="bg-indigo-600/"],
+html.light [class*="bg-indigo-950/"] {
+  background-color: #e0e7ff !important;
+  border-color: #c7d2fe !important;
+}
+
+/* Emerald soft tint badges (e.g. Daemon Active, Online icon box) */
+html.light [class*="bg-emerald-500/"],
+html.light [class*="bg-emerald-600/"],
+html.light [class*="bg-emerald-950/"] {
+  background-color: #dcfce7 !important;
+  border-color: #bbf7d0 !important;
+}
+
+/* Rose soft tint badges (e.g. Disconnected, Error, Lockdown) */
+html.light [class*="bg-rose-500/"],
+html.light [class*="bg-rose-600/"],
+html.light [class*="bg-rose-950/"] {
+  background-color: #ffe4e6 !important;
+  border-color: #fecdd3 !important;
+}
+
+/* Amber soft tint badges (e.g. Warning, Lock, Evacuation) */
+html.light [class*="bg-amber-500/"],
+html.light [class*="bg-amber-600/"],
+html.light [class*="bg-amber-950/"] {
+  background-color: #fef3c7 !important;
+  border-color: #fde68a !important;
+}
+
+/* Yellow soft tint badges (e.g. Severe Weather alert) */
+html.light [class*="bg-yellow-500/"],
+html.light [class*="bg-yellow-600/"],
+html.light [class*="bg-yellow-950/"] {
+  background-color: #fef9c3 !important;
+  border-color: #fef08a !important;
+}
+
+/* Blue soft tint badges (e.g. Medical emergency alert) */
+html.light [class*="bg-blue-500/"],
+html.light [class*="bg-blue-600/"],
+html.light [class*="bg-blue-950/"] {
+  background-color: #dbeafe !important;
+  border-color: #bfdbfe !important;
+}
+
+/* Purple soft tint badges */
+html.light [class*="bg-purple-500/"],
+html.light [class*="bg-purple-600/"],
+html.light [class*="bg-purple-950/"] {
+  background-color: #f3e8ff !important;
+  border-color: #e9d5ff !important;
+}
+
+/* Paragraph descriptions inside alert cards in light mode */
+html.light [class*="bg-rose-950/"] p,
+html.light [class*="bg-amber-950/"] p,
+html.light [class*="bg-yellow-950/"] p,
+html.light [class*="bg-blue-950/"] p,
+html.light [class*="bg-emerald-950/"] p {
+  color: #334155 !important; /* slate-700 */
+}
+
+/* =========================================================
+   BUTTON STYLING IN LIGHT MODE
+   ========================================================= */
+
+/* Neutral buttons (Refresh, Switch Role, Locked, Exit, Ping, etc.) */
+html.light button[class*="bg-slate-900"],
+html.light button[class*="bg-slate-800"] {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light button[class*="bg-slate-900"]:hover,
+html.light button[class*="bg-slate-800"]:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+
+/* Sound Test buttons in Emergency Presets */
+html.light button[id^="test-"] {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+html.light button[id^="test-"]:hover {
+  background-color: #f8fafc !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+
+/* Retain high-contrast white text on solid primary buttons & gradient buttons */
+html.light .bg-indigo-600,
+html.light .bg-indigo-500,
+html.light .bg-rose-600,
+html.light .bg-rose-500,
+html.light .bg-emerald-600,
+html.light .bg-emerald-500,
+html.light .bg-amber-600,
+html.light .bg-amber-500,
+html.light .bg-blue-600,
+html.light .bg-blue-500,
+html.light .bg-purple-600,
+html.light .bg-purple-500,
+html.light [class*="from-indigo-"],
+html.light [class*="from-rose-"],
+html.light [class*="from-emerald-"],
+html.light [class*="from-blue-"],
+html.light [class*="from-purple-"] {
+  color: #ffffff !important;
+}
+
+html.light .bg-indigo-600 *,
+html.light .bg-indigo-500 *,
+html.light .bg-rose-600 *,
+html.light .bg-rose-500 *,
+html.light .bg-emerald-600 *,
+html.light .bg-emerald-500 *,
+html.light .bg-amber-600 *,
+html.light .bg-blue-600 *,
+html.light .bg-blue-500 *,
+html.light .bg-purple-600 *,
+html.light .bg-purple-500 *,
+html.light [class*="from-indigo-"] *,
+html.light [class*="from-rose-"] *,
+html.light [class*="from-emerald-"] *,
+html.light [class*="from-blue-"] *,
+html.light [class*="from-purple-"] * {
+  color: #ffffff !important;
+}
+
+/* Ensure bright yellow warning buttons keep black text */
+html.light .bg-yellow-500,
+html.light .bg-yellow-400,
+html.light .bg-yellow-500 *,
+html.light .bg-yellow-400 * {
+  color: #020617 !important;
+}
+
+/* Form inputs & selects */
+html.light input:not([type="range"]),
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Shadows */
+html.light .shadow-md,
+html.light .shadow-lg,
+html.light .shadow-xl,
+html.light .shadow-2xl {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* =========================================================
+   MODAL BACKDROP OVERLAYS
+   Retain dark translucent dimming so white modal dialogs pop
+   ========================================================= */
+html.light .fixed.inset-0:not(#announcement-overlay):not([id*="announcement-overlay"])[class*="bg-slate-950"],
+html.light .fixed.inset-0:not(#announcement-overlay):not([id*="announcement-overlay"]).bg-slate-950\/80,
+html.light .fixed.inset-0:not(#announcement-overlay):not([id*="announcement-overlay"]).bg-slate-950\/95 {
+  background-color: rgba(15, 23, 42, 0.65) !important;
+}
+
+/* Inside standard dialog modals, cards are crisp white */
+html.light .fixed.inset-0:not(#announcement-overlay):not([id*="announcement-overlay"]) [class*="bg-slate-900"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Android setup guide modal specific styling */
+html.light #android-guide-modal-card {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html.light #android-guide-modal-card .border-slate-800,
+html.light #android-guide-modal-card .border-slate-700 {
+  border-color: #e2e8f0 !important;
+}
+html.light #android-guide-modal-card [class*="font-mono"] {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+/* =========================================================
+   EMERGENCY OVERLAY EXCEPTION
+   Overlay screens that intentionally dim the full screen for
+   emergency alarms or live announcements must keep crisp white text
+   and dark high-visibility backgrounds.
+   ========================================================= */
+html.light #announcement-overlay,
+html.light [id*="announcement-overlay"] {
+  color: #ffffff !important;
+}
+
+html.light #announcement-overlay .text-white,
+html.light #announcement-overlay [class*="text-white"],
+html.light #announcement-overlay .text-slate-100,
+html.light #announcement-overlay .text-slate-200,
+html.light #announcement-overlay h2,
+html.light #announcement-overlay h3,
+html.light [id*="announcement-overlay"] .text-white,
+html.light [id*="announcement-overlay"] [class*="text-white"],
+html.light [id*="announcement-overlay"] .text-slate-100,
+html.light [id*="announcement-overlay"] .text-slate-200 {
+  color: #ffffff !important;
+}
+
+html.light #announcement-overlay .text-slate-300,
+html.light #announcement-overlay .text-slate-400,
+html.light [id*="announcement-overlay"] .text-slate-300,
+html.light [id*="announcement-overlay"] .text-slate-400 {
+  color: #e2e8f0 !important;
+}
+
+html.light #announcement-overlay .text-rose-200,
+html.light [id*="announcement-overlay"] .text-rose-200 {
+  color: #fecdd3 !important;
+}
+
+html.light #announcement-overlay .text-amber-200,
+html.light [id*="announcement-overlay"] .text-amber-200 {
+  color: #fde68a !important;
+}
+
+html.light #announcement-overlay [class*="bg-black/"],
+html.light [id*="announcement-overlay"] [class*="bg-black/"] {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* =========================================================
+   EMERGENCY SECTION PRESET CARDS IN LIGHT MODE
+   Ensure alert presets have clear backgrounds, prominent colored
+   titles, and readable high-contrast dark text in light mode.
+   ========================================================= */
+html.light .emergency-alert-card.emergency-card-lockdown {
+  background-color: #fff1f2 !important; /* rose-50 */
+  border-color: #f43f5e !important;     /* rose-500 */
+}
+html.light .emergency-alert-card.emergency-card-lockdown .emergency-card-title {
+  color: #881337 !important;             /* rose-900 */
+}
+html.light .emergency-alert-card.emergency-card-lockdown .emergency-card-desc {
+  color: #9f1239 !important;             /* rose-800 */
+}
+
+html.light .emergency-alert-card.emergency-card-evacuation {
+  background-color: #fffbeb !important; /* amber-50 */
+  border-color: #f59e0b !important;     /* amber-500 */
+}
+html.light .emergency-alert-card.emergency-card-evacuation .emergency-card-title {
+  color: #78350f !important;             /* amber-900 */
+}
+html.light .emergency-alert-card.emergency-card-evacuation .emergency-card-desc {
+  color: #92400e !important;             /* amber-800 */
+}
+
+html.light .emergency-alert-card.emergency-card-weather {
+  background-color: #fefce8 !important; /* yellow-50 */
+  border-color: #eab308 !important;     /* yellow-500 */
+}
+html.light .emergency-alert-card.emergency-card-weather .emergency-card-title {
+  color: #713f12 !important;             /* yellow-900 */
+}
+html.light .emergency-alert-card.emergency-card-weather .emergency-card-desc {
+  color: #854d0e !important;             /* yellow-800 */
+}
+
+html.light .emergency-alert-card.emergency-card-medical {
+  background-color: #eff6ff !important; /* blue-50 */
+  border-color: #3b82f6 !important;     /* blue-500 */
+}
+html.light .emergency-alert-card.emergency-card-medical .emergency-card-title {
+  color: #1e3a8a !important;             /* blue-900 */
+}
+html.light .emergency-alert-card.emergency-card-medical .emergency-card-desc {
+  color: #1e40af !important;             /* blue-800 */
+}
+
+html.light .emergency-alert-card.emergency-card-allclear {
+  background-color: #f0fdf4 !important; /* emerald-50 */
+  border-color: #10b981 !important;     /* emerald-500 */
+}
+html.light .emergency-alert-card.emergency-card-allclear .emergency-card-title {
+  color: #064e3b !important;             /* emerald-900 */
+}
+html.light .emergency-alert-card.emergency-card-allclear .emergency-card-desc {
+  color: #065f46 !important;             /* emerald-800 */
+}
+
+html.light .emergency-alert-card .emergency-sound-test-btn {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light .emergency-alert-card .emergency-sound-test-btn:hover {
+  background-color: #f1f5f9 !important;
+  color: #020617 !important;
+  border-color: #94a3b8 !important;
+}
+
+html.light .emergency-override-desc {
+  color: #b91c1c !important; /* red-700 */
+}
+
