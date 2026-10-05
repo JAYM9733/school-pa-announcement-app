@@ -43,6 +43,11 @@ jobs:
         run: |
           sed -i '/<application/i \    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />\n    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />\n    <uses-permission android:name="android.permission.WAKE_LOCK" />' android/app/src/main/AndroidManifest.xml
 
+      - name: Fix Kotlin Duplicate Classes
+        working-directory: ./school-PA-announcement-system
+        run: |
+          echo -e "\nconfigurations.all {\n    resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'\n    resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'\n    resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'\n}" >> android/app/build.gradle
+
       - name: Build Android APK
         working-directory: ./school-PA-announcement-system/android
         run: |
