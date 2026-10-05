@@ -23,24 +23,28 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
+        working-directory: ./school-PA-announcement-system
         run: |
           npm install
           npm install @capacitor/core @capacitor/cli @capacitor/android
 
       - name: Build Web App
+        working-directory: ./school-PA-announcement-system
         run: npm run build
 
       - name: Initialize Capacitor
+        working-directory: ./school-PA-announcement-system
         run: |
           npx cap init "School PA System" "org.school.pa" --web-dir dist
           npx cap add android
 
       - name: Add Android Background Permissions
+        working-directory: ./school-PA-announcement-system
         run: |
           sed -i '/<application/i \    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />\n    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />\n    <uses-permission android:name="android.permission.WAKE_LOCK" />' android/app/src/main/AndroidManifest.xml
 
       - name: Build Android APK
-        working-directory: ./android
+        working-directory: ./school-PA-announcement-system/android
         run: |
           chmod +x gradlew
           ./gradlew assembleDebug
@@ -49,4 +53,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: School-PA-Android-App
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: school-PA-announcement-system/android/app/build/outputs/apk/debug/app-debug.apk
