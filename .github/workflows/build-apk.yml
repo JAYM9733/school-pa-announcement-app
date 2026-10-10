@@ -38,10 +38,11 @@ jobs:
           npx cap init "School PA System" "org.school.pa" --web-dir dist
           npx cap add android
 
-      - name: Add Android Background Permissions
+      - name: Configure Android Permissions and Security
         working-directory: ./school-PA-announcement-system
         run: |
           sed -i '/<application/i \    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />\n    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />\n    <uses-permission android:name="android.permission.WAKE_LOCK" />' android/app/src/main/AndroidManifest.xml
+          sed -i 's/<application/<application android:usesCleartextTraffic="true"/g' android/app/src/main/AndroidManifest.xml
 
       - name: Fix Kotlin Duplicate Classes
         working-directory: ./school-PA-announcement-system
