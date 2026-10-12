@@ -35,7 +35,6 @@ jobs:
       - name: Initialize Capacitor
         working-directory: ./school-PA-announcement-system
         run: |
-          npx cap init "School PA System" "org.school.pa" --web-dir dist
           npx cap add android
 
       - name: Configure Android Permissions and Security
