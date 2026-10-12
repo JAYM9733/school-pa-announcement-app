@@ -1,6 +1,5 @@
 import './src/init-env';
 import cors from 'cors';
-app.use(cors({ origin: '*' }));
 import express from 'express';
 import http from 'http';
 import path from 'path';
@@ -17,6 +16,7 @@ import {
 } from './src/types';
 
 const app = express();
+app.use(cors({ origin: '*' }));
 const server = http.createServer(app);
 const PORT = 3000;
 
